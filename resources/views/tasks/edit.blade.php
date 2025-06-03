@@ -7,8 +7,10 @@
     @csrf
     @if (isset($task)) @method('PUT') @endif
 
-    <input type="text" name="title" class="form-control mb-2" placeholder="Title"
-           value="{{ old('title', $task->title ?? '') }}">
+    <input type="text" name="title" class="form-control mb-2 @error('title') is-invalid @enderror" placeholder="Title" value="{{ old('title', $task->title ?? '') }}">
+        @error('title')
+    <div class="invalid-feedback">{{ $message }}</div>
+        @enderror
 
     <textarea name="description" class="form-control mb-2" placeholder="Description">{{ old('description', $task->description ?? '') }}</textarea>
 
@@ -17,8 +19,11 @@
             ? \Carbon\Carbon::parse($task->due_date)->format('Y-m-d\TH:i')
             : '';
     @endphp
-    <input type="datetime-local" name="due_date" class="form-control mb-2"
-           value="{{ old('due_date', $dueDateFormatted) }}">
+    <input type="datetime-local" name="due_date" class="form-control mb-2 @error('due_date') is-invalid @enderror"
+        value="{{ old('due_date', $dueDateFormatted) }}">
+    @error('due_date')
+        <div class="invalid-feedback">{{ $message }}</div>
+    @enderror
 
     <div class="form-check mb-2">
         <!-- Hidden input ensures "0" is sent when unchecked -->
