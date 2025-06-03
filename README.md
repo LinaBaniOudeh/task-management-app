@@ -1,30 +1,26 @@
-# ✅ Task Management App
+# 📝 Task Management App
 
-A simple, clean Laravel 10+ task management application using Blade, Bootstrap 5, and PostgreSQL.  
-Easily add, edit, complete, and manage your tasks in a professional UI.
+A Laravel 10+ Task Management App built with Blade, Bootstrap 5, and PostgreSQL. Easily create, update, filter, and manage your tasks in a clean UI.
 
 ---
 
 ## 🚀 Features
 
-- Create, update, delete tasks
-- Mark tasks as completed or uncompleted
-- Filter and search tasks by keyword
-- Clean UI using Bootstrap 5
-- Responsive layout
-- Blade components for reuse (`alert`, `task-filter`, etc.)
-- Form validation using FormRequest classes
-- Eloquent ORM with clear MVC structure
-- Git-tracked and easy to deploy
+- ✅ Add, edit, delete tasks
+- 🔍 Search and filter by title or date
+- 📅 Sort tasks
+- 💾 PostgreSQL support
+- ✅ Validations with FormRequest
+- 🎨 Blade + Bootstrap UI
 
 ---
 
-## 🛠️ Setup Instructions
+## ⚙️ Setup Instructions
 
 ### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/task-management-app.git
+git clone https://github.com/LinaBaniOudeh/task-management-app.git
 cd task-management-app
 ```
 
@@ -32,66 +28,67 @@ cd task-management-app
 
 ```bash
 composer install
-npm install
+```
+
+If you're using frontend assets:
+
+```bash
+npm install && npm run build
 ```
 
 ### 3. Configure Environment
+
+Copy the example environment file:
 
 ```bash
 cp .env.example .env
 php artisan key:generate
 ```
 
-### 4. Set Up PostgreSQL Database
+Then edit `.env` and set your PostgreSQL DB details:
 
-Update your `.env` file with your database settings:
-
-```env
+```
 DB_CONNECTION=pgsql
 DB_HOST=127.0.0.1
 DB_PORT=5432
-DB_DATABASE=task_management
+DB_DATABASE=task_management_app
 DB_USERNAME=laraveluser
-DB_PASSWORD=yourpassword
+DB_PASSWORD=secret123  # use your own password
 ```
 
-Then run migrations:
+### 4. Run Migrations
 
 ```bash
 php artisan migrate
 ```
 
----
-
-### 5. Run the App
+### 5. Serve the App
 
 ```bash
 php artisan serve
 ```
 
-Visit your app at `http://localhost:8000`.
+Go to: [http://localhost:8000](http://localhost:8000)
 
 ---
 
-## 📦 Optional: Compile Front-End Assets
+## 🐘 PostgreSQL Quick Setup (Optional)
+
+If you don't already have a database set up:
 
 ```bash
-npm run dev
+# PostgreSQL (Ubuntu/macOS)
+createdb task_management_app
 ```
 
-This step is only needed if you modify JS or CSS files via Vite.
+Or use pgAdmin / Docker / ElephantSQL for remote DB.
 
 ---
 
-## ✅ Requirements
+## 📁 Environment Files
 
-- PHP >= 8.1
-- Composer
-- Node.js + npm
-- PostgreSQL
+- `.env` → your personal/local settings (**not committed**)
+- `.env.example` → template others can copy
+
 
 ---
-
-## 🙋 Author
-
-Made with 💻 by [Leena Baniodeh](https://github.com/YOUR_USERNAME)
