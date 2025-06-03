@@ -14,15 +14,29 @@ class TaskController extends Controller
     public function index(Request $request)
     {
         $query = Task::query();
+
+        // Filter by completion status
         if ($request->filter === 'completed') {
             $query->where('is_completed', true);
         } elseif ($request->filter === 'pending') {
             $query->where('is_completed', false);
         }
+
+        // Search by keyword
         if ($request->search) {
-            $query->where('title', 'like', "%{$request->search}%");
+            $query->where('title', 'ILIKE', "%{$request->search}%")
+                ->orWhere('description', 'ILIKE', "%{$request->search}%");
         }
-        $tasks = $query->orderBy('due_date')->paginate(10);
+
+        // Sort by selected field
+        if ($request->sort_by && in_array($request->sort_by, ['title', 'due_date', 'created_at'])) {
+            $direction = $request->sort_direction === 'desc' ? 'desc' : 'asc';
+            $query->orderBy($request->sort_by, $direction);
+        } else {
+            $query->orderBy('due_date');
+        }
+
+        $tasks = $query->paginate(10);
         return view('tasks.index', compact('tasks'));
     }
 
