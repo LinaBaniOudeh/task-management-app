@@ -95,9 +95,3 @@ This step is only needed if you modify JS or CSS files via Vite.
 ## 🙋 Author
 
 Made with 💻 by [Leena Baniodeh](https://github.com/YOUR_USERNAME)
-
----
-
-## 📄 License
-
-MIT
