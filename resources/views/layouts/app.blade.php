@@ -13,34 +13,34 @@
     {{-- <link href="{{ asset('css/styles.css') }}" rel="stylesheet"> --}}
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
-<body class="d-flex flex-column min-vh-100 bg-light">
+<link rel="icon" href="{{ asset('favicon.png') }}" type="image/x-icon">
 
+<body class="d-flex flex-column min-vh-100 bg-light">
+{{-- 
     <!-- 🔷 Header Navbar -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm sticky-top">
         <div class="container">
             <a class="navbar-brand fw-bold" href="{{ route('tasks.index') }}">
-                <i class="bi bi-list-task"></i> TaskManager
+                <img src="{{ asset('task-management.png') }}" alt="Logo" width="45" height="45" class="me-2">
+                 TaskManager
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent">
                 <span class="navbar-toggler-icon"></span>
             </button>
-
-            {{-- <div class="collapse navbar-collapse" id="navbarContent">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ route('tasks.create') }}">
-                            <i class="bi bi-plus-circle"></i> Create Task
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ route('tasks.export') }}">
-                            <i class="bi bi-download"></i> Export
-                        </a>
-                    </li>
-                </ul>
-            </div> --}}
         </div>
-    </nav>
+    </nav> --}}
+<!-- 🔷 Header Navbar -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm sticky-top">
+    <div class="container">
+        <a class="navbar-brand fw-bold d-flex align-items-center" href="{{ route('tasks.index') }}">
+            <img src="{{ asset('task-management.png') }}" alt="Logo" width="40" height="40" class="me-2">
+            <span class="fs-4">TaskManager</span>
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+    </div>
+</nav>
 
     <!-- Main Content -->
     <main class="flex-fill container py-4">
