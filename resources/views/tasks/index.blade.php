@@ -2,6 +2,7 @@
 
 @section('content')
 <div class="container">
+
     <div class="d-flex justify-content-between align-items-center mb-4">
         <h1 class="mb-0">Task List</h1>
         <div class="btn-group">
@@ -14,11 +15,12 @@
         </div>
     </div>
 
-    {{-- Filter and Sort Form --}}
+    {{-- 🔍 Filter and Sort Form --}}
     <form id="filterForm" method="GET">
         <div class="row g-2 mb-3 align-items-center">
             <div class="col-md-4">
-                <input type="text" name="search" id="search" value="{{ request('search') }}" class="form-control" placeholder="Search tasks...">
+                <input type="text" name="search" id="search" value="{{ request('search') }}" class="form-control"
+                       placeholder="Search tasks...">
             </div>
             <div class="col-md-2">
                 <select name="filter" id="filter" class="form-select">
@@ -42,14 +44,15 @@
                 </select>
             </div>
             <div class="col-md-2">
-                <button type="reset" class="btn btn-outline-secondary w-100" onclick="window.location='{{ route('tasks.index') }}'">Reset</button>
+                <button type="reset" class="btn btn-outline-secondary w-100"
+                        onclick="window.location='{{ route('tasks.index') }}'">Reset</button>
             </div>
         </div>
     </form>
 
-    {{-- Task Table --}}
+    {{-- 📋 Task Table (ONLY this is updated via AJAX) --}}
     <div id="taskTableWrapper">
-        @if($tasks->count())
+        @if ($tasks->count())
             <table class="table table-striped">
                 <thead>
                     <tr>
@@ -78,7 +81,8 @@
                                 <form action="{{ route('tasks.destroy', $task) }}" method="POST" class="d-inline">
                                     @csrf
                                     @method('DELETE')
-                                    <button class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this task?')">
+                                    <button class="btn btn-danger btn-sm"
+                                            onclick="return confirm('Are you sure you want to delete this task?')">
                                         <i class="bi bi-trash"></i> Delete
                                     </button>
                                 </form>
@@ -96,32 +100,32 @@
 @endsection
 
 @push('scripts')
-<script>
-$(document).ready(function () {
-    let delay;
-    $('#search').on('input', function () {
-        clearTimeout(delay);
-        delay = setTimeout(fetchTasks, 400);
-    });
+    <script>
+        $(document).ready(function () {
+            let delay;
+            $('#search').on('input', function () {
+                clearTimeout(delay);
+                delay = setTimeout(fetchTasks, 400);
+            });
 
-    $('#sort_by, #sort_direction, #filter').on('change', function () {
-        fetchTasks();
-    });
+            $('#sort_by, #sort_direction, #filter').on('change', function () {
+                fetchTasks();
+            });
 
-    function fetchTasks() {
-        $.ajax({
-            url: '{{ route('tasks.index') }}',
-            type: 'GET',
-            data: $('#filterForm').serialize(),
-            success: function (response) {
-                const html = $(response).find('#taskTableWrapper').html();
-                $('#taskTableWrapper').html(html);
-            },
-            error: function () {
-                alert('Failed to fetch updated tasks.');
+            function fetchTasks() {
+                $.ajax({
+                    url: '{{ route('tasks.index') }}',
+                    type: 'GET',
+                    data: $('#filterForm').serialize(),
+                    success: function (response) {
+                        const html = $(response).find('#taskTableWrapper').html();
+                        $('#taskTableWrapper').html(html);
+                    },
+                    error: function () {
+                        alert('Failed to fetch updated tasks.');
+                    }
+                });
             }
         });
-    }
-});
-</script>
+    </script>
 @endpush
