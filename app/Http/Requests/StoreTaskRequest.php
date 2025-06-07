@@ -24,7 +24,7 @@ class StoreTaskRequest extends FormRequest
         return [
             'title' => 'required|string|max:255',
             'description' => 'nullable|string',
-            'due_date' => 'required|date', // make due_date required
+            'due_date' => 'required|date|after_or_equal:today', // make due_date required
             'is_completed' => 'boolean'
         ];
     }
