@@ -12,8 +12,10 @@ A Laravel 10+ Task Management App built with Blade, Bootstrap 5, and PostgreSQL.
 - 💾 PostgreSQL support
 - ✅ Validations with FormRequest
 - 🎨 Blade + Bootstrap UI
-![image](https://github.com/user-attachments/assets/6a1736af-e2b0-422d-9774-51006b660b7f)
-![image](https://github.com/user-attachments/assets/b36a4ed9-9fcc-410c-92ba-bd11b3e98ab9)
+![image](https://github.com/user-attachments/assets/2a4a8851-b50c-45b9-97f6-cbd1fc730367)
+
+![image](https://github.com/user-attachments/assets/057b4a13-b93d-450b-aab3-00fc51f34a40)
+
 
 
 
